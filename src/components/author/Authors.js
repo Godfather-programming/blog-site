@@ -17,8 +17,10 @@ function Authors() {
   const { authors } = data
 
   return (
-    <Grid container sx={{boxShadow: "rgba(0, 0, 0, 0.1) 0px 4px 12px", borderRadius: 4}}>
+    <Grid container sx={{boxShadow: "rgba(0, 0, 0, 0.1) 0px 4px 12px", borderRadius: 4, display:"flex", flexDirection: "column", justifyContent:"space-between"}}>
       {authors.map((author, index) => (
+        <> 
+        <Grid width="100%">  
         <React.Fragment key={author.id}>
         <Grid size={{xs: 12}} padding={2}>
          <Link to={`/authors/${author.slug}`} style={{display: "flex", alignItems:"center", textDecoration: "none" }}>
@@ -34,7 +36,12 @@ function Authors() {
         </Grid>
       )}
       </React.Fragment>
+      </Grid>
 
+      <Grid container sx={{color:"purple"}}>
+        {author.field}
+      </Grid>
+      </>
       ))}
     </Grid>
   )

@@ -18,8 +18,7 @@ function AuthorPage() {
   
     if (error) return <h3> an error occured </h3>
     console.log(data)
-    const { author } = data
-    const {avatar, name , field, description, post} = author
+    const { author : {avatar, name , field, description, post}  } = data
   return (
     <Container maxWidth="lg">
       <Grid container mt={10}>

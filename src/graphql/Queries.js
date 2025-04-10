@@ -27,6 +27,7 @@ const GET_AUTHORS_INFO = gql`
     
       authors {
                name
+               field
                id
                slug
                avatar {
@@ -75,6 +76,7 @@ const GET_BLOG_INFO = gql`
         }
       }
     }
+    slug
     content {
       html
     }
@@ -83,8 +85,17 @@ const GET_BLOG_INFO = gql`
     }
     title
   }
+}  
+`
+
+const GET_BLOG_COMMENTS = gql`
+query GetBlogComments($slug: String!) {
+  comments(where: {post: {slug: $slug}}) {
+    name
+    text
+    id
+  }
 }
-   
 `
  
-export { GET_BLOGS_INFO, GET_AUTHORS_INFO, GET_AUTHOR_INFO, GET_BLOG_INFO };
+export { GET_BLOGS_INFO, GET_AUTHORS_INFO, GET_AUTHOR_INFO, GET_BLOG_INFO, GET_BLOG_COMMENTS };
